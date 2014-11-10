@@ -1,0 +1,13 @@
+@mixin font-size($target) {
+  $rem: ($target / 16);
+  font-size: #{$target}px;
+  font-size: #{$rem}rem;
+}
+
+@function em($target-px, $context) {
+  @return ($target-px / $context) * 1em;
+}
+
+@function percent($target, $context) {
+  @return ($target / $context) * 100%;
+}

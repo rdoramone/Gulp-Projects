@@ -1,0 +1,17 @@
+@mixin media($media) {
+
+  @if $media == $small-device {
+
+    @media only screen and (max-width: $small-device) { @content; }
+
+  } @else if $media == $medium-device {
+
+    @media only screen and (max-width: $medium-device) { @content; }
+
+  } @else if $media == $large-device {
+
+    @media only screen and (min-width: $large-device) { @content; }
+
+  }
+
+}
