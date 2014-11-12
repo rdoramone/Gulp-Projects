@@ -1,0 +1,1 @@
+Insira a pasta "audios" e a pasta "videos" caso seja necessarios
