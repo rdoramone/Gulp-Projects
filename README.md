@@ -28,7 +28,7 @@ npm install -global gulp
 ```
 
 ##5) Inicializando o projeto no Gulp.
-Após a instalação do Gulp em escopo global, vamos iniciar a utilização do Gulp. Baixe o projeto que criei <a href="https://github.com/rdoramone/Gulp-Projects/archive/master.zip" target="_blank">clicando aqui</a>. Salve o projeto na pasta que desejar. Abra o prompt de comando e coloque o caminho de onde o projeto foi salvo.
+Após a instalação do Gulp em escopo global, vamos iniciar a utilização do Gulp. Baixe o projeto <a href="https://github.com/rdoramone/Gulp-Projects/archive/master.zip" target="_blank">clicando aqui</a>. Dentro do zip temos dois projetos com estruturas diferentes, o primeiro é o <b>v1</b>, que está com a versão antiga do projeto, o <b>v2</b> é uma nova versão, que eu julgo uma versão melhor para se trabalhar. Escolha uma das duas versões e salve o projeto na pasta que desejar. Abra o prompt de comando e coloque o caminho de onde o projeto foi salvo.
 
 Dentro do projeto existe um arquivo chamado <b>package.json</b>, dentro dele existem algumas informações relacionadas ao projeto e a suas tarefas, como nome do projeto, descrição do projeto, versão, autor, módulos utilizados no projeto e etc.
 
