@@ -8,6 +8,8 @@ var browserSync = require('browser-sync'),
 	imagemin = require('gulp-imagemin'),
 	jshint = require('gulp-jshint'),
 	notify = require('gulp-notify'),
+	plumber = require('gulp-plumber'),
+	pngquant = require('imagemin-pngquant'),
 	reload = browserSync.reload,
 	uglify = require('gulp-uglify');
 
@@ -83,6 +85,7 @@ var configBrowserSyncProd = {
 
 	gulp.task('htmlsDev', function(){
 		return gulp.src(pathSourceHtmlFiles)
+			.pipe(plumber())
 			.pipe(htmlhint(
 				{
 					"tagname-lowercase"		   : true, // O nome da tag deve estar em letras minúsculas;
@@ -108,6 +111,7 @@ var configBrowserSyncProd = {
 
 	gulp.task('sassDev', function(){
 		return gulp.src(pathSourceSassFiles)
+			.pipe(plumber())
 			.pipe(compass({
 				css: pathPublicCss,
 				font: pathPublicFonts,
@@ -124,6 +128,7 @@ var configBrowserSyncProd = {
 
 	gulp.task('appsDev', function(){
 		return gulp.src(pathSourceJsAppFiles, {base: pathSourceJsApp})
+			.pipe(plumber())
 			.pipe(jshint('.jshintrc'))
 			.pipe(jshint.reporter('jshint-stylish'))
 			.pipe(jshint.reporter('fail'))
@@ -134,6 +139,7 @@ var configBrowserSyncProd = {
 
 	gulp.task('libsDev', function(){
 		return gulp.src(pathSourceJsLibsFiles, {base: pathSourceJsLibs})
+			.pipe(plumber())
 			.pipe(concat('plugins.js'))
 			.pipe(gulp.dest(pathPublicJsLibs))
 			.pipe(reload({stream: true}));
@@ -166,33 +172,42 @@ var configBrowserSyncProd = {
 /* ---------- ESTRUTURA DE PROD ---------- */
 	gulp.task('htmlsProd', function(){
 		return gulp.src(pathPublicHtml, {base: pathPublic})
+			.pipe(plumber())
 			.pipe(htmlmin({removeComments : true, collapseWhitespace: true}))
 			.pipe(gulp.dest(pathProd));
 	})
 
 	gulp.task('cssProd', function(){
 		return gulp.src(pathPublicCssFiles, {base: pathPublicCss})
+			.pipe(plumber())
 			.pipe(gulp.dest(pathProdCss));
 	})
 
 	gulp.task('fontProd', function(){
 		return gulp.src(pathPublicFontsFiles, {base: pathPublicFonts})
+			.pipe(plumber())
 			.pipe(gulp.dest(pathProdFonts));
 	})
 
 	gulp.task('imgsProd', function(){
 		return gulp.src(pathPublicImgFiles, {base: pathPublicImg})
+			.pipe(plumber())
 			.pipe(imagemin({
-				progressive: true,
 				interlaced: true,
 				optimizationLevel: 7,
-				svgoPlugins: [{removeViewBox: false}]
+				progressive: true,
+				svgoPlugins: [{removeViewBox: false}],
+				use: [pngquant({
+					quality: '65-80',
+					speed: 1
+				})]
 			}))
 			.pipe(gulp.dest(pathProdImg));
 	})
 
 	gulp.task('appsProd', function(){
 		return gulp.src(pathPublicJsFiles, {base: pathPublicJs})
+			.pipe(plumber())
 			.pipe(uglify({
 				mangle: true,
 				output: {
@@ -236,6 +251,7 @@ var configBrowserSyncProd = {
 
 	gulp.task('libsProd', function(){
 		return gulp.src(pathPublicJsLibsFiles, {base: pathPublicJsLibs})
+			.pipe(plumber())
 			.pipe(uglify({
 				preserveComments: false
 			}))
