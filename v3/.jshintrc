@@ -1,0 +1,5 @@
+// Acrescentar as opções do JsHint no formato de JSON.
+{
+	"undef" : true, // Obriga que todas as variáveis locais sejam declaradas.
+	"unused": true // Caso tenha alguma variável que não está sendo utilizada, essa opção faz com que a variável seja apontada.
+}

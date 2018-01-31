@@ -52,4 +52,5 @@ v1/node_modules/*
 v1/.sass-cache/*
 v2/.sass-cache/*
 v2/node_modules/*
-v2/public/*
+v3/.sass-cache/*
+v3/node_modules/*
