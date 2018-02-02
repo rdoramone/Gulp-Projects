@@ -4,15 +4,15 @@ var gulp = require('gulp'),
     reload = browserSync.reload,
     plugins = require('gulp-load-plugins')();
 
-gulp.task('appsDev', function() {
+gulp.task('appDev', function() {
     return gulp.src(config.path.source.js.app + '/*.js', { base: config.path.source.js.app })
-        .pipe(plugins.plumber())
-        .pipe(plugins.concat('application.js'))
-        .pipe(gulp.dest(config.path.public.js.app))
-        .pipe(reload({ stream: true }));
+    .pipe(plugins.plumber())
+    .pipe(plugins.concat('app.js'))
+    .pipe(gulp.dest(config.path.public.js.app))
+    .pipe(reload({ stream: true }));
 });
 
-gulp.task('appsProd', function() {
+gulp.task('appProd', function() {
     return gulp.src(config.path.public.js.app + '/*.js', { base: config.path.public.js.app })
         .pipe(plugins.plumber())
         .pipe(plugins.uglify({
@@ -56,6 +56,6 @@ gulp.task('appsProd', function() {
         .pipe(gulp.dest(config.path.dist.js.app));
 });
 
-gulp.task('watchApps', function() {
-    gulp.watch(config.path.source.js.app, ['appsDev']);
+gulp.task('watchApp', function() {
+    gulp.watch(config.path.source.js.app + '/*.js', ['appDev'])
 });

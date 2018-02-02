@@ -1,8 +1,9 @@
 var gulp = require('gulp'),
     config = require('../config.js'),
+    pngquant = require('imagemin-pngquant'),
     plugins = require('gulp-load-plugins')();
 
-gulp.task('images', function() {
+gulp.task('image', function() {
     return gulp.src(config.path.public.img + '/{**/*.{jpg,png,gif,svg}, *.{jpg,png,gif,svg}}', { base: config.path.public.img })
         .pipe(plugins.plumber())
         .pipe(plugins.imagemin({
@@ -10,7 +11,7 @@ gulp.task('images', function() {
             optimizationLevel: 7,
             progressive: true,
             svgoPlugins: [{ removeViewBox: false }],
-            use: [plugins.pngquant({
+            use: [pngquant({
                 quality: '65-80',
                 speed: 1
             })]

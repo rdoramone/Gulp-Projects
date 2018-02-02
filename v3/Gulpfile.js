@@ -1,8 +1,17 @@
-require('./config/gulp/tasks/app');
-require('./config/gulp/tasks/build');
-require('./config/gulp/tasks/fonts');
-require('./config/gulp/tasks/html');
-require('./config/gulp/tasks/image');
-require('./config/gulp/tasks/libs');
-require('./config/gulp/tasks/sass');
-require('./config/gulp/tasks/utils');
+var pathTasks = './config/gulp/tasks/';
+
+/* Chamando apenas as task a serem utilizadas, uma a uma */
+// require(pathTasks + 'app');
+// require(pathTasks + 'build');
+// require(pathTasks + 'fonts');
+// require(pathTasks + 'html');
+// require(pathTasks + 'image');
+// require(pathTasks + 'libs');
+// require(pathTasks + 'sass');
+// require(pathTasks + 'utils');
+
+/* Chamando apenas as task a serem utilizadas, verificando os arquivos que estão na pasta task */
+require('fs').readdirSync(pathTasks).forEach((file) => {
+        if (file !== 'compass.js') 
+            return require(pathTasks + file);
+});

@@ -5,7 +5,7 @@ module.exports = {
             root: "source",
             html: "source/html",
             js: {
-                app: "source/assets/js/application",
+                app: "source/assets/js/app",
                 libs: "source/assets/js/libs",
                 utils: "source/assets/js/utils"
             },
@@ -34,7 +34,8 @@ module.exports = {
             img: "dist/assets/img",
             js: {
                 app: "dist/assets/js",
-                libs: "dist/assets/js/libs"
+                libs: "dist/assets/js/libs",
+                utils: "dist/assets/js/utils"
             }
         }
     },

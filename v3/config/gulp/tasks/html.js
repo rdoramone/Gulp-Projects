@@ -4,14 +4,14 @@ var gulp = require('gulp'),
     reload = browserSync.reload,
     plugins = require('gulp-load-plugins')();
 
-gulp.task('htmlsDev', function(){
+gulp.task('htmlDev', function(){
     return gulp.src(config.path.source.html + '/*.html')
         .pipe(plugins.plumber())
         .pipe(gulp.dest(config.path.public.root))
         .pipe(reload({stream: true}));
 });
 
-gulp.task('htmlsProd', function(){
+gulp.task('htmlProd', function(){
     return gulp.src(config.path.public.html, {base: config.path.public.root})
         .pipe(plugins.plumber())
         .pipe(plugins.htmlmin({removeComments : true, collapseWhitespace: true}))
@@ -19,6 +19,6 @@ gulp.task('htmlsProd', function(){
 });
 
 gulp.task('watchHtml', function(){
-    gulp.watch(config.path.source.html + '/*.html', ['htmlsDev']);
+    gulp.watch(config.path.source.html + '/*.html', ['htmlDev']);
 });
 

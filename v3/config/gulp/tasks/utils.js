@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     reload = browserSync.reload,
     plugins = require('gulp-load-plugins')();
 
-gulp.task('utilsDev', function() {
+gulp.task('utilDev', function() {
     return gulp.src(config.path.source.js.utils + '/*.js', { base: config.path.source.js.utils })
         .pipe(plugins.plumber())
         .pipe(plugins.concat('utils.js'))
@@ -12,11 +12,7 @@ gulp.task('utilsDev', function() {
         .pipe(reload({ stream: true }));
 });
 
-gulp.task('watchUtils', function() {
-    gulp.watch(config.path.source.js.utils, ['utilsDev']);
-});
-
-gulp.task('utilsProd', function() {
+gulp.task('utilProd', function() {
     return gulp.src(config.path.public.js.utils + '/*.js', { base: config.path.public.js.utils })
         .pipe(plugins.plumber())
         .pipe(plugins.uglify({
@@ -58,4 +54,8 @@ gulp.task('utilsProd', function() {
             preserveComments: false
         }))
         .pipe(gulp.dest(config.path.dist.js.utils));
+});
+
+gulp.task('watchUtil', function() {
+    gulp.watch(config.path.source.js.utils + '/*.js', ['utilDev']);
 });
