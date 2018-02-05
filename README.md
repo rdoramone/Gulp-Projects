@@ -1,6 +1,4 @@
-#Gulp Projects
-
-Modelo de projeto Gulp para projetos web. 
+#Gulp para projetos web. 
 
 #Modelos para projetos web.
 Esse projeto foi criado com intuito inicial de estudar um novo otimizador de tarefas, no caso uma alteranativa ao Grunt. 
