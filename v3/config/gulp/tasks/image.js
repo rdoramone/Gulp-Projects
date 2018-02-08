@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     pngquant = require('imagemin-pngquant'),
     plugins = require('gulp-load-plugins')();
 
-gulp.task('image', function() {
+gulp.task('imageProd', function() {
     return gulp.src(config.path.public.img + '/{**/*.{jpg,png,gif,svg}, *.{jpg,png,gif,svg}}', { base: config.path.public.img })
         .pipe(plugins.plumber())
         .pipe(plugins.imagemin({
